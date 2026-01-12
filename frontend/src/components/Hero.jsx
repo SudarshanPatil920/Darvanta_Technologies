@@ -10,8 +10,8 @@ const Hero = () => {
   ];
 
   return (
-    <section 
-      id="home" 
+    <section
+      id="home"
       className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-white via-blue-50/30 to-indigo-50/20"
     >
       {/* Background Elements */}
@@ -32,21 +32,23 @@ const Hero = () => {
             </div>
 
             {/* Headline */}
+            {/* Headline */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
               <span className="block text-gray-900">
-                Build the Future with
+                Darvanta Technologies
               </span>
               <span className="block bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent">
-                Modern Software
+                Building Modern Digital Solutions
               </span>
             </h1>
 
+
             {/* Description */}
             <p className="text-xl text-gray-600 max-w-2xl">
-              We craft cutting-edge digital solutions that drive growth, 
-              enhance efficiency, and deliver exceptional user experiences 
-              for forward-thinking businesses.
+              Darvanta Technologies is a technology company focused on building
+              modern digital solutions that drive growth and innovation.
             </p>
+
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
@@ -54,7 +56,7 @@ const Hero = () => {
                 Start Your Project
                 <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
-              
+
               <button className="group px-8 py-4 border-2 border-gray-300 text-gray-700 font-semibold rounded-xl hover:border-blue-500 hover:text-blue-600 transition-all duration-300 flex items-center justify-center">
                 <Play className="mr-3 w-5 h-5" />
                 View Services
@@ -153,10 +155,9 @@ const Hero = () => {
                       className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors"
                     >
                       <div className="flex items-center space-x-3">
-                        <div className={`w-2 h-2 rounded-full ${
-                          index === 0 ? 'bg-green-500' : 
+                        <div className={`w-2 h-2 rounded-full ${index === 0 ? 'bg-green-500' :
                           index === 1 ? 'bg-blue-500' : 'bg-purple-500'
-                        }`}></div>
+                          }`}></div>
                         <span className="text-gray-700">{activity}</span>
                       </div>
                       <span className="text-sm text-gray-500">2h ago</span>
