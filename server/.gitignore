@@ -1,0 +1,13 @@
+# Server dependencies (if installed here)
+node_modules/
+
+# Server env
+.env
+
+# Logs
+logs/
+*.log
+
+# Uploads / temp
+uploads/
+tmp/
