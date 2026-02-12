@@ -19,15 +19,15 @@ export function Navbar() {
   return (
     <header className={cn(
       'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-      scrolled 
-        ? 'bg-white/95 backdrop-blur-md shadow-sm py-4' 
+      scrolled
+        ? 'bg-white/95 backdrop-blur-md shadow-sm py-4'
         : 'bg-transparent py-6'
     )}>
       <nav className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo - Full Company Name */}
           <Link to="/" className="flex items-center gap-2">
-            <img src="/src/assets/Logo.png" alt="Darvanta Technologies" className="h-8 w-auto" />
+            <img src="/logo.png" alt="Darvanta Technologies" className="h-8 w-auto" />
             <div className="flex flex-col">
               <span className="text-xl font-semibold tracking-tight text-gray-900 leading-tight">
                 Darvanta<span className="text-[#0A5C4E]">.</span>
