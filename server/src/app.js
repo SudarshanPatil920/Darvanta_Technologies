@@ -6,14 +6,13 @@ import dotenv from "dotenv";
 import { connectDB } from "./config/db.js";
 import contactRoutes from "./routes/contact.routes.js";
 
-// dotenv.config();
 connectDB();
 
 const app = express();
 
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL,
+    origin: process.env.FRONTEND_URL || "*",
     credentials: true
   })
 );
