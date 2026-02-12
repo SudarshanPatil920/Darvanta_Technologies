@@ -8,7 +8,7 @@ export function Footer() {
           {/* Brand column */}
           <div className="lg:col-span-2 text-center md:text-left">
             <div className="flex items-center gap-3 mb-6 justify-center md:justify-start">
-              <img src="/logo.png" alt="Darvanta Technologies" className="h-9 w-auto" />
+              <img src="/Logo.png" alt="Darvanta Technologies" className="h-9 w-auto" />
               <div className="flex flex-col">
                 <span className="text-xl font-semibold tracking-tight text-white">
                   Darvanta<span className="text-[#0A5C4E]">.</span>

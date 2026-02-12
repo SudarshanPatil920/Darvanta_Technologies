@@ -27,7 +27,7 @@ export function Navbar() {
         <div className="flex items-center justify-between">
           {/* Logo - Full Company Name */}
           <Link to="/" className="flex items-center gap-2">
-            <img src="/logo.png" alt="Darvanta Technologies" className="h-8 w-auto" />
+            <img src="/Logo.png" alt="Darvanta Technologies" className="h-8 w-auto" />
             <div className="flex flex-col">
               <span className="text-xl font-semibold tracking-tight text-gray-900 leading-tight">
                 Darvanta<span className="text-[#0A5C4E]">.</span>
