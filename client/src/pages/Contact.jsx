@@ -29,13 +29,17 @@ export function ContactPage() {
     setLoading(true);
 
     try {
-      const res = await fetch('http://localhost:5000/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(form)
-      });
+      const res = await fetch(
+        `${import.meta.env.VITE_API_BASE_URL}/api/contact`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(form)
+        }
+      );
+
 
       if (!res.ok) {
         throw new Error('Request failed');
@@ -206,9 +210,9 @@ export function ContactPage() {
 
                   {/* Submit Button */}
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-700 ease-out delay-450">
-                    <Button 
-                      type="submit" 
-                      className="w-full transform hover:scale-[1.02] transition-all duration-300" 
+                    <Button
+                      type="submit"
+                      className="w-full transform hover:scale-[1.02] transition-all duration-300"
                       disabled={loading}
                     >
                       {loading ? 'Sending...' : 'Send Message'}
