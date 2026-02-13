@@ -9,17 +9,21 @@ export const submitContact = async (req, res) => {
       return res.status(400).json({ message: "Missing required fields" });
     }
 
-    // ✅ Save to DB
+    // 1️⃣ Save to DB (fast, required)
     await Contact.create({ name, email, company, message });
 
-    // ✅ Respond immediately (FAST UX)
+    // 2️⃣ RESPOND IMMEDIATELY (client is done here)
     res.status(201).json({
       message: "Message submitted successfully",
     });
 
-    // ✅ Send emails in background (Brevo API)
-    sendContactEmails({ name, email, company, message })
-      .catch(err => console.error("Email error:", err));
+    // 3️⃣ Run email sending fully in background
+    setImmediate(() => {
+      sendContactEmails({ name, email, company, message })
+        .catch(err => {
+          console.error("Email error:", err);
+        });
+    });
 
   } catch (error) {
     console.error(error);
