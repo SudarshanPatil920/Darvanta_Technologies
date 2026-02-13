@@ -43,11 +43,20 @@ export function Hero() {
               From AI/ML to cloud infrastructure, we build the systems that power modern business.
             </p>
 
-            <div className="flex flex-wrap gap-4">
-              <Button href="/contact" size="lg">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button
+                href="/contact"
+                size="lg"
+                className="w-full sm:w-auto whitespace-nowrap"
+              >
                 Start your project
               </Button>
-              <Button href="/services" variant="secondary" size="lg">
+              <Button
+                href="/services"
+                variant="secondary"
+                size="lg"
+                className="w-full sm:w-auto whitespace-nowrap"
+              >
                 Explore services
               </Button>
             </div>

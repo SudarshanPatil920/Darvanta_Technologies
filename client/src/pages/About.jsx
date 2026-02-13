@@ -17,7 +17,7 @@ export function AboutPage() {
               About Darvanta Technologies
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl">
-              Founded in 2015, we've grown from a boutique engineering shop to a global 
+              Founded in 2021, we've grown from a boutique engineering shop to a global 
               technology partner for the world's most ambitious organizations.
             </p>
           </div>
