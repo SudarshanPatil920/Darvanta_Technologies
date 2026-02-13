@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Button } from '../components/Button';
 import { ContactCTA } from '../sections/ContactCTA';
 import { toast } from 'react-hot-toast';
+const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 export function ContactPage() {
   const [form, setForm] = useState({
@@ -40,16 +41,21 @@ export function ContactPage() {
         }
       );
 
-
       if (!res.ok) {
         throw new Error('Request failed');
       }
 
-      toast.success('Inquiry sent successfully! We\'ll get back to you soon.', {
-        duration: 5000,
-        position: 'top-right',
-        icon: '✅'
-      });
+      // 🔥 Intentional micro-delay for smooth UX
+      await sleep(500);
+
+      toast.success(
+        "Inquiry sent successfully! We'll get back to you soon.",
+        {
+          duration: 4000,
+          position: 'top-right',
+          icon: '✅'
+        }
+      );
 
       setForm({
         name: '',
@@ -57,17 +63,27 @@ export function ContactPage() {
         company: '',
         message: ''
       });
+
     } catch (error) {
       console.error(error);
-      toast.error('Failed to send inquiry. Please try again.', {
-        duration: 5000,
-        position: 'top-right',
-        icon: '❌'
-      });
+
+      await sleep(300);
+
+      toast.error(
+        'Failed to send inquiry. Please try again.',
+        {
+          duration: 4000,
+          position: 'top-right',
+          icon: '❌'
+        }
+      );
     } finally {
-      setLoading(false);
+      setTimeout(() => {
+        setLoading(false);
+      }, 200);
     }
   };
+
 
   return (
     <>
@@ -212,11 +228,15 @@ export function ContactPage() {
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-700 ease-out delay-450">
                     <Button
                       type="submit"
-                      className="w-full transform hover:scale-[1.02] transition-all duration-300"
+                      className={`w-full transition-all duration-300 ${loading ? 'opacity-70' : 'opacity-100'
+                        }`}
                       disabled={loading}
                     >
-                      {loading ? 'Sending...' : 'Send Message'}
+                      <span className="transition-opacity duration-200">
+                        {loading ? 'Sending...' : 'Send Message'}
+                      </span>
                     </Button>
+
                   </div>
 
                   <p className="text-xs text-gray-500 text-center mt-4 animate-in fade-in duration-700 ease-out delay-500">
