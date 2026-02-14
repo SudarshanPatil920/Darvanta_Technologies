@@ -8,6 +8,7 @@ export function ContactPage() {
   const [form, setForm] = useState({
     name: '',
     email: '',
+    phone: '',
     company: '',
     message: ''
   });
@@ -45,6 +46,7 @@ export function ContactPage() {
     setForm({
       name: '',
       email: '',
+      phone: '',
       company: '',
       message: ''
     });
@@ -174,8 +176,32 @@ export function ContactPage() {
                     />
                   </div>
 
+                  {/* Phone Field */}
+                  <div className="animate-in fade-in slide-in-from-bottom-4 duration-700 ease-out delay-325">
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                      Contact number
+                    </label>
+
+                    <input
+                      type="tel"
+                      id="phone"
+                      value={form.phone}
+                      onChange={handleChange}
+                      maxLength={13}
+                      pattern="(\+91)?[6-9]\d{9}"
+                      className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg
+               focus:outline-none focus:ring-2 focus:ring-[#0A5C4E]/20
+               focus:border-[#0A5C4E] transition-all duration-300"
+                      placeholder="Enter contact number"
+                    />
+
+                    <p className="text-xs text-gray-500 mt-1">
+                      Indian mobile number (with or without +91)
+                    </p>
+                  </div>
+
                   {/* Company Field */}
-                  <div className="animate-in fade-in slide-in-from-bottom-4 duration-700 ease-out delay-350">
+                  {/* <div className="animate-in fade-in slide-in-from-bottom-4 duration-700 ease-out delay-350">
                     <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
                       Business / Profession
                     </label>
@@ -187,12 +213,12 @@ export function ContactPage() {
                       className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0A5C4E]/20 focus:border-[#0A5C4E] transition-all duration-300"
                       placeholder="What do you do?"
                     />
-                  </div>
+                  </div> */}
 
                   {/* Message Field */}
                   <div className="animate-in fade-in slide-in-from-bottom-4 duration-700 ease-out delay-400">
                     <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                      What are you planning?
+                      What’s on your mind?
                     </label>
                     <textarea
                       id="message"
