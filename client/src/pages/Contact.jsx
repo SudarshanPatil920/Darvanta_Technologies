@@ -29,10 +29,10 @@ export function ContactPage() {
     e.preventDefault();
     setLoading(true);
 
-    // 1️⃣ Small intentional delay so it doesn’t feel fake
+    const payload = { ...form }; // ✅ store data safely
+
     await sleep(400);
 
-    // 2️⃣ SHOW SUCCESS IMMEDIATELY
     toast.success(
       "Message sent successfully! We'll get back to you soon.",
       {
@@ -42,7 +42,6 @@ export function ContactPage() {
       }
     );
 
-    // 3️⃣ Reset UI immediately
     setForm({
       name: '',
       email: '',
@@ -54,18 +53,17 @@ export function ContactPage() {
       setLoading(false);
     }, 200);
 
-    // 4️⃣ FIRE BACKEND REQUEST IN BACKGROUND (DO NOT AWAIT)
+    // 🔥 Background request using payload
     fetch(`${import.meta.env.VITE_API_BASE_URL}/api/contact`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(form)
+      body: JSON.stringify(payload)
     }).catch((err) => {
       console.error("Background request failed:", err);
     });
   };
-
 
 
   return (
