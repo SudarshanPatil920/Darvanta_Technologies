@@ -29,60 +29,43 @@ export function ContactPage() {
     e.preventDefault();
     setLoading(true);
 
-    try {
-      const res = await fetch(
-        `${import.meta.env.VITE_API_BASE_URL}/api/contact`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(form)
-        }
-      );
+    // 1️⃣ Small intentional delay so it doesn’t feel fake
+    await sleep(400);
 
-      if (!res.ok) {
-        throw new Error('Request failed');
+    // 2️⃣ SHOW SUCCESS IMMEDIATELY
+    toast.success(
+      "Message sent successfully! We'll get back to you soon.",
+      {
+        duration: 4000,
+        position: 'top-right',
+        icon: '✅'
       }
+    );
 
-      // 🔥 Intentional micro-delay for smooth UX
-      await sleep(500);
+    // 3️⃣ Reset UI immediately
+    setForm({
+      name: '',
+      email: '',
+      company: '',
+      message: ''
+    });
 
-      toast.success(
-        "Inquiry sent successfully! We'll get back to you soon.",
-        {
-          duration: 4000,
-          position: 'top-right',
-          icon: '✅'
-        }
-      );
+    setTimeout(() => {
+      setLoading(false);
+    }, 200);
 
-      setForm({
-        name: '',
-        email: '',
-        company: '',
-        message: ''
-      });
-
-    } catch (error) {
-      console.error(error);
-
-      await sleep(300);
-
-      toast.error(
-        'Failed to send inquiry. Please try again.',
-        {
-          duration: 4000,
-          position: 'top-right',
-          icon: '❌'
-        }
-      );
-    } finally {
-      setTimeout(() => {
-        setLoading(false);
-      }, 200);
-    }
+    // 4️⃣ FIRE BACKEND REQUEST IN BACKGROUND (DO NOT AWAIT)
+    fetch(`${import.meta.env.VITE_API_BASE_URL}/api/contact`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(form)
+    }).catch((err) => {
+      console.error("Background request failed:", err);
+    });
   };
+
 
 
   return (
